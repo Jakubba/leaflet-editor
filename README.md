@@ -104,3 +104,5 @@ Licencja
 Projekt dostępny na licencji MIT.
 
 dodaokto w zainstalowałem npm install html2canvas jspdf
+npm install framer-motion react-intersection-observer
+

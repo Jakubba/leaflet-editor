@@ -3,9 +3,17 @@ import useStore from '../store';
 import { Button } from '@mui/material';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import {
+  themeStyles,
+  titleStyles,
+  descriptionStyles,
+  numberPageStyles,
+  clipPaths,
+} from '../utils/themeStyles';
 
 const ExportToPDF = () => {
   const pages = useStore((state) => state.pages);
+  const theme = useStore((state) => state.theme);
   const exportRef = useRef<HTMLDivElement>(null);
 
   const handleExport = async () => {
@@ -40,8 +48,9 @@ const ExportToPDF = () => {
           '&:hover': { backgroundColor: '#388e3c' },
         }}
       >
-        Eksportuj do PDF
+        Export to PDF
       </Button>
+
       <div
         ref={exportRef}
         style={{
@@ -54,19 +63,31 @@ const ExportToPDF = () => {
         }}
       >
         {pages.map((page, index) => (
-          <div key={index} style={{ marginBottom: 20, borderBottom: '1px solid #ccc' }}>
-            <h2>{page.title}</h2>
-            <p>{page.description}</p>
-            <p>
-              <strong>Strona:</strong> {page.pageNumber}
-            </p>
+          <div
+            key={index}
+            style={{
+              marginBottom: 20,
+              borderBottom: '1px solid #ccc',
+              ...themeStyles[theme],
+            }}
+          >
+            <h2 style={titleStyles[theme]}>{page.title}</h2>
+            <p style={descriptionStyles[theme]}>{page.description}</p>
             {page.image && (
               <img
                 src={page.image}
                 alt='Zdjęcie'
-                style={{ maxWidth: '100%', height: 'auto', marginTop: 10 }}
+                style={{
+                  maxWidth: '100%',
+                  height: 'auto',
+                  marginTop: 10,
+                  objectFit: 'cover',
+                  borderRadius: 4,
+                  clipPath: clipPaths[theme] || 'none',
+                }}
               />
             )}
+            <p style={numberPageStyles[theme]}>{page.pageNumber}</p>
           </div>
         ))}
       </div>

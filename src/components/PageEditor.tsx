@@ -1,4 +1,3 @@
-// src/components/PageEditor.jsx
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, Card, CardContent, Typography } from '@mui/material';
 import useStore from '../store';
@@ -56,10 +55,10 @@ const PageEditor = () => {
     <Card sx={{ mb: 4 }}>
       <CardContent>
         <Typography variant='h6'>
-          {editingPageIndex !== null ? 'Edytuj stronę' : 'Dodaj nową stronę'}
+          {editingPageIndex !== null ? 'Edit page' : 'Add new page'}
         </Typography>
         <TextField
-          label='Tytuł'
+          label='Title'
           fullWidth
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -77,7 +76,7 @@ const PageEditor = () => {
           }}
         />
         <TextField
-          label='Opis'
+          label='Description'
           fullWidth
           multiline
           rows={3}
@@ -97,7 +96,7 @@ const PageEditor = () => {
           }}
         />
         <TextField
-          label='Numer strony'
+          label='Number of page'
           fullWidth
           value={pageNumber}
           onChange={(e) => setPageNumber(e.target.value)}
@@ -124,7 +123,7 @@ const PageEditor = () => {
             color: '#fff',
           }}
         >
-          Dodaj zdjęcie
+          Add Image
           <input type='file' hidden onChange={handleImageChange} />
         </Button>
         {image && (
@@ -140,7 +139,7 @@ const PageEditor = () => {
               '&:hover': { backgroundColor: '#388e3c', color: '#fff' },
             }}
           >
-            {editingPageIndex !== null ? 'Zapisz zmiany' : 'Dodaj stronę'}
+            {editingPageIndex !== null ? 'Save Changes' : 'Add Page'}
           </Button>
           {editingPageIndex !== null && (
             <Button
@@ -149,7 +148,7 @@ const PageEditor = () => {
               onClick={handleCancel}
               sx={{ ml: 2 }}
             >
-              Anuluj edycję
+              Cancel Editing
             </Button>
           )}
         </div>
