@@ -1,13 +1,17 @@
 import React from 'react';
+import type { ReactNode } from 'react';
 import { Container, Typography } from '@mui/material';
 import PageEditor from '../components/PageEditor';
 import PagesList from '../components/PagesList';
-import ExportToPDF from '../components/ExportToPDF';
+import ExportToPDF from '../components/ExportToPDF/ExportToPDF';
 import ThemeSelector from '../components/ThemeSelector';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-
-const FadeInSection = ({ children, delay = 0 }) => {
+interface FadeInSectionProps {
+  children: ReactNode;
+  delay?: number;
+}
+const FadeInSection: React.FC<FadeInSectionProps> = ({ children, delay = 0 }) => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
@@ -34,7 +38,6 @@ const Editor = () => {
           sx={{
             color: '#50A379',
             fontWeight: 'bold',
-            textShadow: '2.5px 8px 2px rgba(5, 61, 13, 0.15)',
             fontFamily: 'Inter, sans-serif',
           }}
           gutterBottom

@@ -1,6 +1,12 @@
+import React from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
+import type { Page } from '../types';
 
-const PagePreview = ({ data }) => (
+interface PagePreviewProps {
+  data: Page;
+}
+
+const PagePreview: React.FC<PagePreviewProps> = ({ data }) => (
   <Card sx={{ mb: 2 }}>
     <CardContent>
       <Typography variant='h5'>{data.title}</Typography>

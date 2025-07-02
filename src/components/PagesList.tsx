@@ -2,6 +2,7 @@ import React from 'react';
 import useStore from '../store';
 import { Card, CardContent, Typography, Button } from '@mui/material';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import type { DropResult } from '@hello-pangea/dnd';
 import {
   themeStyles,
   titleStyles,
@@ -15,7 +16,7 @@ const PagesList = () => {
   const setEditingPage = useStore((state) => state.setEditingPage);
   const reorderPages = useStore((state) => state.reorderPages);
   const theme = useStore((state) => state.theme);
-  const onDragEnd = (result) => {
+  const onDragEnd = (result: DropResult) => {
     const { source, destination } = result;
     if (!destination) return;
     if (source.index !== destination.index) {
@@ -26,7 +27,7 @@ const PagesList = () => {
   return (
     <div className='w-full bg-white rounded-md p-4'>
       <Typography className='text-black' variant='h5' sx={{ mt: 0, mb: 1 }}>
-        Strony w gazetce:
+        Pages List
       </Typography>
       {pages.length === 0 && <Typography className='text-black'>Empty list</Typography>}
 
