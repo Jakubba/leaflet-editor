@@ -1,4 +1,3 @@
-import React from 'react';
 import useStore from '../store';
 import { Card, CardContent, Typography, Button } from '@mui/material';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
