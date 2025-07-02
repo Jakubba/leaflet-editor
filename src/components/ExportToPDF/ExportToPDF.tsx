@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import useStore from '../../store';
 import { Button } from '@mui/material';
 import PDFPage from './PDFPage';
